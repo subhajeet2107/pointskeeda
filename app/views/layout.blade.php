@@ -37,7 +37,11 @@
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</nav>
-	@yield('content')
+	@if (Auth::user())
+		@yield('content-admin')
+	@else
+		@yield('content')
+	@endif
 </div>
 <!-- Page Specific Plugins -->
 {{HTML::script('/js/tablesorter/jquery.tablesorter.js')}}

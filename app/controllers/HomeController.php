@@ -19,8 +19,8 @@ class HomeController extends BaseController {
 
 	public function postLogin()
 	{
-		$player_count = 10;
-		return View::make('main')->with('player_count',$player_count);
+		//log the user in and redirect to admin panel
+		return Redirect::to('admin');
 	}
 
 	public function postRegister()
