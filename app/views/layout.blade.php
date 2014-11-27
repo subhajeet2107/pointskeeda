@@ -37,7 +37,7 @@
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</nav>
-	@if (Auth::user())
+	@if (Auth::check())
 		@yield('content-admin')
 	@else
 		@yield('content')
