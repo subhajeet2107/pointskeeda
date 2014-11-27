@@ -19,6 +19,9 @@ class HomeController extends BaseController {
 
 	public function postLogin()
 	{
+		$user = User::find(1);
+		Auth::login($user);
+
 		//log the user in and redirect to admin panel
 		return Redirect::to('admin');
 	}
