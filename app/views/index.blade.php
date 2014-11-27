@@ -7,6 +7,7 @@
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+	{{HTML::style('/font-awesome/css/font-awesome.min.css')}}
 	<style>
 		@import url(//fonts.googleapis.com/css?family=Lato:700);
 
@@ -15,6 +16,9 @@
 			font-family:'Lato', sans-serif;
 			text-align:center;
 			
+		}
+		.fa{
+			margin-left:10px;
 		}
 	</style>
 
@@ -59,7 +63,53 @@
 		</div>
 	</div>
 
-	
+	<div class="panel panel-default">
+		<div class="panel-body">
+		   <table class="table table-bordered table-hover tablesorter">
+                <thead>
+                  <tr>
+                  
+                    <th>Id<i class="fa fa-sort"></i></th>
+                    <th>Player Name<i class="fa fa-sort"></i></th>
+                    <th>Player Points<i class="fa fa-sort"></i></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>1</td>
+                    <td>Shubhajeet</td>
+                    <td>20</td>
+                    </tr>
+                    <tr>
+                    <td>2</td>
+                    <td>Pankaj</td>
+                    <td>35</td>
+                    </tr>
+                    <tr>
+                    <td>3</td>
+                    <td>Shubham</td>
+                    <td>10</td>
+                    </tr>
+                    <tr>
+                    <td>4</td>
+                    <td>Ashoke</td>
+                    <td>42</td>
+                    </tr>
+                    <tr>
+                    <td>5</td>
+                    <td>Krishan</td>
+                    <td>65</td>
+                    </tr>
+                </tbody>
+                
+              </table>
+		</div>
+	</div>
+
+
 </div>
+<!-- Page Specific Plugins -->
+{{HTML::script('/js/tablesorter/jquery.tablesorter.js')}}
+{{HTML::script('/js/tablesorter/tables.js')}}
 </body>
 </html>
