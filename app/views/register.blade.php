@@ -8,6 +8,14 @@
 			<fieldset>
 				<h2>Register On PointsKeeda</h2>
 				<hr class="colorgraph">
+				@if (!empty($errors))
+					@foreach ($errors->all() as $message)
+						{{$message}}
+					@endforeach
+				@endif
+				@if (!empty($auth_errors))
+						{{$auth_errors}}
+				@endif
 				<div class="form-group">
                     <input type="text" name="username" id="name" class="form-control input-lg" placeholder="Username">
 				</div>
@@ -18,7 +26,7 @@
                     <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
 				</div>
 				<div class="form-group">
-                    <input type="password" name="confirm-password" id="confirm-password" class="form-control input-lg" placeholder="Confirm Password">
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password">
 				</div>
 				<hr class="colorgraph">
 				<div class="row">

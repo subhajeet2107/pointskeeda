@@ -25,6 +25,20 @@ class HomeController extends BaseController {
 
 	public function postLogin()
 	{
+		$data = Input::only(['email','password']);
+
+		$validator = Validator::make(
+            $data,
+            [
+                'email' => 'required|email|min:8',
+                'password' => 'required',
+            ]
+        );
+
+        if($validator->fails()){
+            return View::make('login')->withErrors($validator);
+        }
+
 		$email = Input::get('email');
 		$password = Input::get('password');
 
@@ -35,7 +49,7 @@ class HomeController extends BaseController {
 
 		}else{
 
-			return View::make('login');
+			return View::make('login')->with('auth_errors','Incorrect Username/Password');
 		}
 		
 	}
@@ -48,7 +62,31 @@ class HomeController extends BaseController {
 
 	public function postRegister()
 	{
-		return View::make('login');
+		$data = Input::only(['username','email','password','password_confirmation']);
+
+		$validator = Validator::make(
+            $data,
+            [
+                'username' => 'required|min:5',
+                'email' => 'required|email|min:5',
+                'password' => 'required|min:5|confirmed',
+                'password_confirmation'=> 'required|min:5'
+            ]
+        );
+
+        if($validator->fails()){
+            return View::make('register')->withErrors($validator)->withInput();
+        }
+
+		$newUser = User::create($data);
+
+        if($newUser){
+            Auth::login($newUser);
+            return Redirect::to('admin');
+        }else{
+
+			return View::make('login');
+		}
 	}
 
 

@@ -8,6 +8,14 @@
 			<fieldset>
 				<h2>Please Sign In</h2>
 				<hr class="colorgraph">
+				@if (!empty($errors))
+					@foreach ($errors->all() as $message)
+						{{$message}}
+					@endforeach
+				@endif
+				@if (!empty($auth_errors))
+						{{$auth_errors}}
+				@endif
 				<div class="form-group">
                     <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
 				</div>
