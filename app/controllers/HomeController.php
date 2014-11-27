@@ -9,7 +9,13 @@ class HomeController extends BaseController {
 
 	public function getLogin()
 	{
-		return View::make('login');
+		if(Auth::check())
+		{
+			return Redirect::to('admin');
+		}else{
+			return View::make('login');
+		}
+		
 	}
 
 	public function getRegister()
@@ -21,6 +27,7 @@ class HomeController extends BaseController {
 	{
 		$email = Input::get('email');
 		$password = Input::get('password');
+
 		if (Auth::attempt(array('email' => $email, 'password' => $password), true))
 		{
 			//log the user in and redirect to admin panel
@@ -31,6 +38,12 @@ class HomeController extends BaseController {
 			return View::make('login');
 		}
 		
+	}
+
+	public function getLogout()
+	{
+		Auth::logout();
+		return Redirect::to('/');
 	}
 
 	public function postRegister()

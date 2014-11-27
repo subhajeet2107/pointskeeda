@@ -29,19 +29,23 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
+					@if (Auth::check())
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome {{ ucwords(Auth::user()->username) }} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{{ URL::to('admin') }}">Admin Panel</a></li>
+							<li><a href="{{ URL::to('logout') }}">Logout</a></li>
+						</ul>
+					@else
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Panel <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="{{ URL::to('login') }}">Login</a></li>
 					</ul>
+					@endif
 				</li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</nav>
-	@if (Auth::check())
-		@yield('content-admin')
-	@else
 		@yield('content')
-	@endif
 </div>
 <!-- Page Specific Plugins -->
 {{HTML::script('/js/tablesorter/jquery.tablesorter.js')}}
