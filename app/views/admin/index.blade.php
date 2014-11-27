@@ -44,48 +44,79 @@
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
-       <div class="panel panel-default">
-        <div class="panel-body">
-           <table class="table table-bordered table-hover tablesorter">
-                <thead>
-                  <tr>
-                  
-                    <th>Id<i class="fa fa-sort"></i></th>
-                    <th>Player Name<i class="fa fa-sort"></i></th>
-                    <th>Player Points<i class="fa fa-sort"></i></th>
-                    <th>Modify</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>1</td>
-                    <td>Shubhajeet</td>
-                    <td>20</td>
-                    </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>Pankaj</td>
-                    <td>35</td>
-                    </tr>
-                    <tr>
-                    <td>3</td>
-                    <td>Shubham</td>
-                    <td>10</td>
-                    </tr>
-                    <tr>
-                    <td>4</td>
-                    <td>Ashoke</td>
-                    <td>42</td>
-                    </tr>
-                    <tr>
-                    <td>5</td>
-                    <td>Krishan</td>
-                    <td>65</td>
-                    </tr>
-                </tbody>
-                
-              </table>
+       @if (!empty($player_data) && count($player_data) > 0)
+        <div class="panel panel-default">
+            <div class="panel-body">
+               <table class="table table-bordered table-hover tablesorter">
+                    <thead>
+                      <tr>
+                      
+                        <th>Id<i class="fa fa-sort"></i></th>
+                        <th>Player Name<i class="fa fa-sort"></i></th>
+                        <th>Player Points<i class="fa fa-sort"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($player_data as $player)
+                        <tr>
+                            <td>{{ $player->id }}</td>
+                            <td>{{ $player->player_name }}</td>
+                            <td>{{ $player->points }}</td>
+                        </tr>
+                        @endforeach
+                        
+                    </tbody>
+                    
+                  </table>
+            </div>
         </div>
+    @else
+    <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover tablesorter">
+                    <thead>
+                      <tr>
+                      
+                        <th>Id</th>
+                        <th>Player Name</th>
+                        <th>Player Points</th>
+                        <th>Modify</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <form action="" method="POST" class="form-horizontal" role="form">
+                           <tr>
+                           <td>1</td>
+                            <td>
+                            <div class="form-group">
+                                <label for="input" class="col-sm-2 control-label">Name:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="player_name" id="input" class="form-control" value="" required="required" pattern="" title="">
+                                </div>
+                            </div></td>
+                            <td>
+                            <div class="form-group">
+                                <label for="inputPoints" class="col-sm-2 control-label">Points:</label>
+                                <div class="col-sm-10">
+                                    <input type="number" name="points" id="inputPoints" class="form-control" min="0" max="100" step="" required="required" title="">
+                                </div>
+                            </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-offset-2">
+                                        <button type="submit" class="btn btn-primary">Add New Player</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </form>
+                    </tbody>
+                    
+                  </table>
+            </div>
+    </div>
+    @endif
     </div>
 </div>
 <!-- Page Specific Plugins -->

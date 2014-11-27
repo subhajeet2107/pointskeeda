@@ -5,7 +5,7 @@ class SeedPlayersTableTableSeeder extends Seeder {
 	{
 		$players = [
 			[
-                'player_name' => 'Shubhajeet<',
+                'player_name' => 'Shubhajeet',
                	'points' =>20
             ],
             [

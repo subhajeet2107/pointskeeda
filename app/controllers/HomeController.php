@@ -4,7 +4,14 @@ class HomeController extends BaseController {
 
 	public function getIndex()
 	{
-		return View::make('main');
+		//get all players from table
+		$all_players = Player::orderBy('points')->get();
+		if(!empty($all_players)){
+			return View::make('main')->with('player_data',$all_players);
+		}else{
+			return View::make('main');
+		}
+		
 	}
 
 	public function getLogin()
