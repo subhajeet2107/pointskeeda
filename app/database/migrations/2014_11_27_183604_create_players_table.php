@@ -15,6 +15,8 @@ class CreatePlayersTable extends Migration {
 		Schema::create('players', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('player_name');
+			$table->integer('points');
 			$table->timestamps();
 		});
 	}
