@@ -1,20 +1,25 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
-
 class SeedUsersTableTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
+		$users = [
+            [
+                'username' => 'shubhajeetdey',
+                'email' => 'shubhajeet2107@gmail.com',
+                'password' => Hash::make('shubhajeet')
+            ],
+            [
+                'username' => 'ashishkumar',
+                'email' => 'ashish@gmail.com',
+                'password' => Hash::make('ashish')
+            ],
+        ];
 
-		foreach(range(1, 10) as $index)
-		{
-			SeedUsersTable::create([
-
-			]);
-		}
+        foreach($users as $user){
+            User::create($user);
+        }
 	}
 
 }
