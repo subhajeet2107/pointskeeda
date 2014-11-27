@@ -63,7 +63,6 @@ class HomeController extends BaseController {
 	public function postRegister()
 	{
 		$data = Input::only(['username','email','password','password_confirmation']);
-
 		$validator = Validator::make(
             $data,
             [
@@ -75,8 +74,10 @@ class HomeController extends BaseController {
         );
 
         if($validator->fails()){
-            return View::make('register')->withErrors($validator)->withInput();
+            return View::make('register')->withErrors($validator);
         }
+        //hash our password after matching with confirm password ,should work a bit faster
+        $data['password'] = Hash::make($data['password']);
 
 		$newUser = User::create($data);
 

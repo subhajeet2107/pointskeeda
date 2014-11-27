@@ -38,6 +38,7 @@
 					@else
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Panel <b class="caret"></b></a>
 					<ul class="dropdown-menu">
+						<li><a href="{{ URL::to('register') }}">Register</a></li>
 						<li><a href="{{ URL::to('login') }}">Login</a></li>
 					</ul>
 					@endif
@@ -45,7 +46,7 @@
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</nav>
-		@yield('content')
+	@yield('content')
 </div>
 <!-- Page Specific Plugins -->
 {{HTML::script('/js/tablesorter/jquery.tablesorter.js')}}

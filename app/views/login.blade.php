@@ -10,11 +10,17 @@
 				<hr class="colorgraph">
 				@if (!empty($errors))
 					@foreach ($errors->all() as $message)
-						{{$message}}
+						<div class="alert alert-danger">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							<strong>{{$message}}</strong> 
+						</div>
 					@endforeach
 				@endif
 				@if (!empty($auth_errors))
-						{{$auth_errors}}
+					<div class="alert alert-danger">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							<strong>{{$auth_errors}}</strong> 
+					</div>
 				@endif
 				<div class="form-group">
                     <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
