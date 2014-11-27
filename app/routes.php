@@ -10,5 +10,5 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+Route::controller('admin', 'AdminController');
 Route::controller('/', 'HomeController');
