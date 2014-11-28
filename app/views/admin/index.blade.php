@@ -74,7 +74,7 @@
                             <td>{{ $player->id }}</td>
                             <td>{{ $player->player_name }}</td>
                             <td>{{ $player->points }}</td>
-                            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                            <td><p><button class="btn btn-primary btn-xs edit_btn" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                             <td><p><a href="{{ URL::to('/admin/delete').'/'.$player->id }}" class="btn btn-danger btn-xs" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></a></p></td>
                         </tr>
                         @endforeach
@@ -165,6 +165,7 @@
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
+      <form action="{{ URL::to('/admin/update') }}" method="POST" role="form" class="update_player_form">
     <div class="modal-content">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -173,16 +174,18 @@
         <div class="modal-body">
 
               <div class="form-group">
-                <input class="form-control" type="text" name="player_name" placeholder="Player Name">
+                <input class="form-control player_name_edit" type="text" name="player_name_edit" placeholder="Player Name">
             </div>
             <div class="form-group">
-            <input class="form-control" type="number" name="points" placeholder = "Points">
+            <input class="form-control points_edit" type="number" name="points_edit" placeholder = "Points">
             </div>
+             <input class="player_id_edit" type="hidden" name="player_id_edit" />
         </div>
           <div class="modal-footer">
-        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+        <input type="submit" class="btn btn-warning btn-lg update_btn_modal" style="width: 100%;"  value="Update" />
       </div>
         </div>
+        </form>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 

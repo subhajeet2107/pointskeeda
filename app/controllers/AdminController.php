@@ -51,6 +51,37 @@ class AdminController extends BaseController {
 		}
 	}
 
+	public function postUpdate()
+	{
+		if(Auth::check()){
+			//leaving validation on add new player for now
+			
+			$player_name = trim(Input::get('player_name_edit'));
+			$points = intval(Input::get('points_edit'));
+			$player_id = Input::get('player_id_edit');
+			$message = "";
+			
+			if($points < 0 )
+			{
+				$message = "Player Points cannot be less than zero";
+			}else{
+
+				$new_player = Player::find($player_id);
+				$new_player->player_name = $player_name;
+				$new_player->points = $points;
+				$new_player->save();
+				$message ="Player has been updated successfully !";
+			}
+
+			
+			Session::flash('message', $message);
+			return Redirect::to('admin');
+			
+		}else{
+			return Redirect::to('login');
+		}
+	}
+
 	public function getDelete($player_id)
 	{
 		if(Auth::check()){
